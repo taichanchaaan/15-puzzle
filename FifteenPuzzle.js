@@ -32,6 +32,14 @@ const FifteenPuzzle = () => {
     generateBoard();
   }, [size, generateBoard]);
 
+  useEffect(() => {
+    if (isBoardInOrder(board)) {
+      clearInterval(intervalId);
+      setRankings((prevRankings) => [...prevRankings, { moves: moves, time }]);
+      setGameCleared(true);
+    }
+  }, [board]);
+
   const shuffleBoard = (flatBoard) => {
     const shuffledBoard = [...flatBoard];
     for (let i = shuffledBoard.length - 1; i > 0; i--) {
@@ -97,11 +105,6 @@ const FifteenPuzzle = () => {
         setGameStarted(true);
         const id = setInterval(() => setTime((prevTime) => prevTime + 1), 1000);
         setIntervalId(id);
-      }
-      if (isBoardInOrder(newBoard)) {
-        clearInterval(intervalId);
-        setRankings((prevRankings) => [...prevRankings, { moves: moves + 1, time }]);
-        setGameCleared(true);
       }
     }
   };
