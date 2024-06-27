@@ -213,6 +213,13 @@ body {
   color: #333;
 }
 
+/* 完成メッセージのスタイル */
+.completion-message {
+  margin: 20px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
 /* ランキングのスタイル */
 .rankings {
   margin-top: 20px;
